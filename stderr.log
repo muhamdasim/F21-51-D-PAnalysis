@@ -1,0 +1,946 @@
+Traceback (most recent call last):
+  File "/home/codeeeml/fyp.codeaza-apps.com/passenger_wsgi.py", line 1, in <module>
+    from app import app as application
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966
+    cursor.execute("select * from tweets where username=='Haris__Manzoor'")
+    ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "/home/codeeeml/fyp.codeaza-apps.com/passenger_wsgi.py", line 1, in <module>
+    from app import app as application
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966
+    cursor.execute("select * from tweets where username=='Haris__Manzoor'")
+    ^
+SyntaxError: invalid syntax
+[2021-12-18 15:04:46,994] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 964, in about
+    model= Model("static/models/humour_en/saved_model/lstm.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 10, in __init__
+    self.model= joblib.load(filename)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 587, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 506, in _unpickle
+    obj = unpickler.load()
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1210, in load
+    dispatch[key[0]](self)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1526, in load_global
+    klass = self.find_class(module, name)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1577, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'keras'
+[2021-12-18 15:05:52,967] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 964, in about
+    model= Model("static/models/humour_en/saved_model/lstm.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 10, in __init__
+    self.model= joblib.load(filename)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 587, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 506, in _unpickle
+    obj = unpickler.load()
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1210, in load
+    dispatch[key[0]](self)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1526, in load_global
+    klass = self.find_class(module, name)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1577, in find_class
+    __import__(module, level=0)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/keras/__init__.py", line 21, in <module>
+    from tensorflow.python import tf2
+ModuleNotFoundError: No module named 'tensorflow'
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806419 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806421 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806422 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806442 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806663 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806666 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 806693 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 807267 was killed by signal: 6, core dump: 0
+The TensorFlow library was compiled to use SSE4.1 instructions, but these aren't available on your machine.
+[UID:1094][806181] Child process with pid: 807269 was killed by signal: 6, core dump: 0
+[2021-12-18 15:12:08,763] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966, in about
+    cursor.execute("select * from tweets where username=='Haris__Manzoor'")
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/MySQLdb/cursors.py", line 206, in execute
+    res = self._query(query)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/MySQLdb/cursors.py", line 319, in _query
+    db.query(q)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/MySQLdb/connections.py", line 259, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '='Haris__Manzoor'' at line 1")
+[2021-12-18 15:14:51,971] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 968, in about
+    df= pd.dataframe(data)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/pandas/__init__.py", line 244, in __getattr__
+    raise AttributeError(f"module 'pandas' has no attribute '{name}'")
+AttributeError: module 'pandas' has no attribute 'dataframe'
+    id              tweetID  ...              tweetTS        username
+0    1  1466882988914925575  ...  2021-12-03 21:32:12  Haris__Manzoor
+1    2  1466720872316735489  ...  2021-12-03 10:48:00  Haris__Manzoor
+2    3  1466690424865792006  ...  2021-12-03 08:47:01  Haris__Manzoor
+3    4  1466538996117360647  ...  2021-12-02 22:45:18  Haris__Manzoor
+4    5  1466538326924546051  ...  2021-12-02 22:42:38  Haris__Manzoor
+5    6  1466537904910462977  ...  2021-12-02 22:40:58  Haris__Manzoor
+6    7  1466537131204124678  ...  2021-12-02 22:37:53  Haris__Manzoor
+7    8  1466533223320604672  ...  2021-12-02 22:22:21  Haris__Manzoor
+8    9  1466532190355742723  ...  2021-12-02 22:18:15  Haris__Manzoor
+9   10  1466505170695688196  ...  2021-12-02 20:30:53  Haris__Manzoor
+10  11  1466504751072358401  ...  2021-12-02 20:29:13  Haris__Manzoor
+11  12  1471599702818889735  ...  2021-12-16 21:54:44        elonmusk
+12  13  1471590093471326215  ...  2021-12-16 21:16:33        elonmusk
+13  14  1471583489824808972  ...  2021-12-16 20:50:19        elonmusk
+14  15  1471582809512939527  ...  2021-12-16 20:47:37        elonmusk
+15  16  1471581040426860549  ...  2021-12-16 20:40:35        elonmusk
+16  17  1471580241537732608  ...  2021-12-16 20:37:24        elonmusk
+17  18  1471563333841137664  ...  2021-12-16 19:30:13        elonmusk
+18  19  1471562586286174217  ...  2021-12-16 19:27:15        elonmusk
+19  20  1471556384667979777  ...  2021-12-16 19:02:36        elonmusk
+20  21  1471555887387058184  ...  2021-12-16 19:00:38        elonmusk
+21  22  1471555649205157892  ...  2021-12-16 18:59:41        elonmusk
+22  23  1472289354429054977  ...  2021-12-18 19:35:10      kevinABD17
+23  24  1472288820557070342  ...  2021-12-18 19:33:03      kevinABD17
+24  25  1472288733785247748  ...  2021-12-18 19:32:42      kevinABD17
+25  26  1472288544823541761  ...  2021-12-18 19:31:57      kevinABD17
+26  27  1472284802732625921  ...  2021-12-18 19:17:05      kevinABD17
+27  28  1472284799863721991  ...  2021-12-18 19:17:04      kevinABD17
+28  29  1472277474465619970  ...  2021-12-18 18:47:58      kevinABD17
+29  30  1472277343624302593  ...  2021-12-18 18:47:26      kevinABD17
+30  31  1472203235909767171  ...  2021-12-18 13:52:58      kevinABD17
+31  32  1472201408011116550  ...  2021-12-18 13:45:42      kevinABD17
+32  33  1472199834824105986  ...  2021-12-18 13:39:27      kevinABD17
+33  34  1472288699387895815  ...  2021-12-18 19:32:34  ABdeVilliers17
+34  35  1472287055073927170  ...  2021-12-18 19:26:02  ABdeVilliers17
+35  36  1472286244528926721  ...  2021-12-18 19:22:49  ABdeVilliers17
+36  37  1472141144989515777  ...  2021-12-18 09:46:14  ABdeVilliers17
+37  38  1471849402608328706  ...  2021-12-17 14:26:57  ABdeVilliers17
+38  39  1471153345838649347  ...  2021-12-15 16:21:05  ABdeVilliers17
+39  40  1471082279476899845  ...  2021-12-15 11:38:41  ABdeVilliers17
+40  41  1470858233694752768  ...  2021-12-14 20:48:24  ABdeVilliers17
+41  42  1470355767727476739  ...  2021-12-13 11:31:47  ABdeVilliers17
+42  43  1470355089890189316  ...  2021-12-13 11:29:05  ABdeVilliers17
+43  44  1468995588935061504  ...  2021-12-09 17:26:55  ABdeVilliers17
+
+[44 rows x 5 columns]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:488: FutureWarning: The feature names should match those that were passed during fit. Starting version 1.2, an error will be raised.
+Feature names unseen at fit time:
+- content
+- id
+- tweetID
+- tweetTS
+- username
+Feature names seen at fit time, yet now missing:
+- text
+
+  warnings.warn(message, FutureWarning)
+[2021-12-18 15:16:55,137] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 969, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 14, in predict
+    return self.model.predict(data)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 798, in predict
+    proba = self.predict_proba(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 840, in predict_proba
+    X = self._validate_X_predict(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 569, in _validate_X_predict
+    X = self._validate_data(X, dtype=DTYPE, accept_sparse="csr", reset=False)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py", line 561, in _validate_data
+    X = check_array(X, **check_params)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/utils/validation.py", line 738, in check_array
+    array = np.asarray(array, order=order, dtype=dtype)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/pandas/core/generic.py", line 1990, in __array__
+    return np.asarray(self._values, dtype=dtype)
+ValueError: could not convert string to float: 'https://t.co/v6lO6ouyKu\n #Sialkot'
+[2021-12-18 15:19:08,463] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 969, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 14, in predict
+    dataset['content'] = number.fit_transform(dataset.content)
+UnboundLocalError: local variable 'dataset' referenced before assignment
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:19:44,125] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 969, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 17, in predict
+    return self.model.predict(data['content'])
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 798, in predict
+    proba = self.predict_proba(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 840, in predict_proba
+    X = self._validate_X_predict(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 569, in _validate_X_predict
+    X = self._validate_data(X, dtype=DTYPE, accept_sparse="csr", reset=False)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py", line 561, in _validate_data
+    X = check_array(X, **check_params)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/utils/validation.py", line 761, in check_array
+    raise ValueError(
+ValueError: Expected 2D array, got 1D array instead:
+array=[42. 23. 21. 24. 25. 22. 26. 27. 20. 37. 36. 30. 31.  5. 10. 16. 18. 35.
+ 17. 12. 13.  6. 32.  3.  1. 39. 11. 34.  0.  9. 41.  4.  2. 14. 29. 28.
+ 40.  8. 15. 33. 38.  7.  7. 19.].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.
+[2021-12-18 15:23:06,686] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 969, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 17, in predict
+    return self.model.predict(data['content'].reshape(-1, 1))
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/pandas/core/generic.py", line 5478, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'Series' object has no attribute 'reshape'
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:23:45,726] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a ndarray.
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:24:13,674] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a ndarray.
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:27:06,444] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 970, in about
+    out_array = numpy.array_str(output)
+NameError: name 'numpy' is not defined
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:27:38,665] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 970, in about
+NameError: name 'numpy' is not defined
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:27:45,047] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 970, in about
+    output=model.predict(df)
+NameError: name 'numpy' is not defined
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 0
+ 1 0 0 0 1 1 0]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-18 15:29:13,808] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 972, in about
+    print(output+ data)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 0
+ 1 0 0 0 1 1 0]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 0
+ 1 0 0 0 1 1 0]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 0
+ 1 0 0 0 1 1 0]
+123456 $5$rounds=535000$s0eserCAFc9N.xn4$fnBxbWw.nDrE8erKHZZzOPj4N9tISr2ucXFpWt2lXp5
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 0
+ 1 0 0 0 1 1 0]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but LinearSVC was fitted with feature names
+  warnings.warn(
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0]
+[2021-12-20 06:37:37,004] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 965, in about
+    model= Model("static/models/humour_en/saved_model/XGBoost.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 10, in __init__
+    self.model= joblib.load(filename)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 587, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 506, in _unpickle
+    obj = unpickler.load()
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1210, in load
+    dispatch[key[0]](self)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1526, in load_global
+    klass = self.find_class(module, name)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1577, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'xgboost'
+[2021-12-20 06:38:44,752] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 965, in about
+    model= Model("static/models/humour_en/saved_model/XGBoost.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 10, in __init__
+    self.model= joblib.load(filename)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 587, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 506, in _unpickle
+    obj = unpickler.load()
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1210, in load
+    dispatch[key[0]](self)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1526, in load_global
+    klass = self.find_class(module, name)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1577, in find_class
+    __import__(module, level=0)
+ModuleNotFoundError: No module named 'xgboost'
+[2021-12-20 06:44:41,112] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 965, in about
+    model = Model()
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 9, in __init__
+    self.filename= filename
+NameError: name 'filename' is not defined
+[2021-12-20 06:45:13,919] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966, in about
+    model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 13, in addModel
+    self.models.append(joblib.lead(filename))
+AttributeError: module 'joblib' has no attribute 'lead'
+[2021-12-20 06:45:39,851] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966, in about
+    model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 13, in addModel
+    self.models.append(joblib.load(filename))
+AttributeError: module 'joblib' has no attribute 'lead'
+[2021-12-20 06:45:45,975] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966, in about
+    model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 13, in addModel
+    self.models.append(joblib.load(filename))
+AttributeError: module 'joblib' has no attribute 'lead'
+[2021-12-20 06:46:14,999] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 966, in about
+    model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 13, in addModel
+    self.models.append(joblib.load(filename))
+AttributeError: module 'joblib' has no attribute 'lead'
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:47:29,040] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 973, in about
+    out_array = numpy.array_str(output)
+  File "<__array_function__ internals>", line 5, in array_str
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1595, in array_str
+    return _array_str_implementation(
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1545, in _array_str_implementation
+    if a.shape == ():
+AttributeError: 'list' object has no attribute 'shape'
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0])]
+[2021-12-20 06:48:47,116] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 971, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 17, in predict
+    for index, i in self.models:
+ValueError: too many values to unpack (expected 2)
+[2021-12-20 06:50:00,851] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 971, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 17, in predict
+    for (index, i) in self.models:
+ValueError: too many values to unpack (expected 2)
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:50:57,710] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 973, in about
+    out_array = numpy.array_str(output)
+  File "<__array_function__ internals>", line 5, in array_str
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1595, in array_str
+    return _array_str_implementation(
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1545, in _array_str_implementation
+    if a.shape == ():
+AttributeError: 'list' object has no attribute 'shape'
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0])]
+[2021-12-20 06:52:51,008] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 973, in about
+    out_array = numpy.array_str(output)
+  File "<__array_function__ internals>", line 5, in array_str
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1595, in array_str
+    return _array_str_implementation(
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1545, in _array_str_implementation
+    if a.shape == ():
+AttributeError: type object 'RandomForestClassifier' has no attribute 'shape'
+<class 'sklearn.ensemble._forest.RandomForestClassifier'>
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:54:52,804] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 973, in about
+    out_array = numpy.array_str(output)
+  File "<__array_function__ internals>", line 5, in array_str
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1595, in array_str
+    return _array_str_implementation(
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1545, in _array_str_implementation
+    if a.shape == ():
+AttributeError: 'list' object has no attribute 'shape'
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:54:52,833] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 973, in about
+    out_array = numpy.array_str(output)
+  File "<__array_function__ internals>", line 5, in array_str
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1595, in array_str
+    return _array_str_implementation(
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/numpy/core/arrayprint.py", line 1545, in _array_str_implementation
+    if a.shape == ():
+AttributeError: 'list' object has no attribute 'shape'
+[]
+[]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:55:49,727] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a list.
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:56:18,965] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a list.
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:56:22,870] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a list.
+[]
+[]
+[]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:57:53,143] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a list.
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[2021-12-20 06:58:18,450] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1727, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The return type must be a string, dict, tuple, Response instance, or WSGI callable, but it was a list.
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0])]
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0])]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0])]
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but LinearSVC was fitted with feature names
+  warnings.warn(
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0]), array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])]
+[2021-12-20 07:17:49,006] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 968, in about
+    model.addModel("static/models/humour_en/saved_model/lstm.joblib")
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 13, in addModel
+    self.models.append(joblib.load(filename))
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 587, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 506, in _unpickle
+    obj = unpickler.load()
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1210, in load
+    dispatch[key[0]](self)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1526, in load_global
+    klass = self.find_class(module, name)
+  File "/opt/alt/python38/lib64/python3.8/pickle.py", line 1577, in find_class
+    __import__(module, level=0)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/keras/__init__.py", line 21, in <module>
+    from tensorflow.python import tf2
+ModuleNotFoundError: No module named 'tensorflow'
+[2021-12-20 08:31:02,147] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 971, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 22, in predict
+    prediction.append( model.predict(data['content'].values.reshape(-1, 1)))
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 798, in predict
+    proba = self.predict_proba(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 840, in predict_proba
+    X = self._validate_X_predict(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 569, in _validate_X_predict
+    X = self._validate_data(X, dtype=DTYPE, accept_sparse="csr", reset=False)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py", line 580, in _validate_data
+    self._check_n_features(X, reset=reset)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py", line 395, in _check_n_features
+    raise ValueError(
+ValueError: X has 1 features, but RandomForestClassifier is expecting 1329 features as input.
+[2021-12-20 08:54:20,669] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 975, in about
+    tfidf=joblib.load("/content/drive/MyDrive/models/offensive_hatespeech_neutral/saved_model/tfidf.joblib")
+NameError: name 'joblib' is not defined
+[2021-12-20 08:55:01,983] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 977, in about
+    tfidf=joblib.load("/content/drive/MyDrive/models/offensive_hatespeech_neutral/saved_model/tfidf.joblib")
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/joblib/numpy_pickle.py", line 579, in load
+    with open(filename, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/content/drive/MyDrive/models/offensive_hatespeech_neutral/saved_model/tfidf.joblib'
+[2021-12-20 08:56:03,108] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 980, in about
+    M = np.concatenate([tfidf,pos,feats],axis=1)
+NameError: name 'np' is not defined
+[2021-12-20 08:56:42,761] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 982, in about
+    X_ = select.fit_transform(X,y)
+NameError: name 'X' is not defined
+[2021-12-20 09:00:58,406] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 985, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 19, in predict
+    data['content'] = number.fit_transform(data.content)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/pandas/core/generic.py", line 5478, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'content'
+[UID:1094][2754970] Child process with pid: 2755464 was killed by signal: 9, core dump: 0
+[UID:1094][2784024] Child process with pid: 2784328 was killed by signal: 9, core dump: 0
+[UID:1094][2784024] Child process with pid: 2785464 was killed by signal: 9, core dump: 0
+[UID:1094][2784024] Child process with pid: 2786354 was killed by signal: 9, core dump: 0
+[2021-12-20 09:05:13,820] ERROR in app: Exception on /about [GET]
+Traceback (most recent call last):
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask_restful/__init__.py", line 271, in error_router
+    return original_handler(e)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/codeeeml/fyp.codeaza-apps.com/app.py", line 973, in about
+    output=model.predict(df)
+  File "/home/codeeeml/fyp.codeaza-apps.com/models.py", line 22, in predict
+    prediction.append( model.predict(data['content'].values.reshape(-1, 1)))
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 798, in predict
+    proba = self.predict_proba(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 840, in predict_proba
+    X = self._validate_X_predict(X)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/ensemble/_forest.py", line 569, in _validate_X_predict
+    X = self._validate_data(X, dtype=DTYPE, accept_sparse="csr", reset=False)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py", line 580, in _validate_data
+    self._check_n_features(X, reset=reset)
+  File "/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py", line 395, in _check_n_features
+    raise ValueError(
+ValueError: X has 1 features, but RandomForestClassifier is expecting 1329 features as input.
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+/home/codeeeml/virtualenv/fyp.codeaza-apps.com/3.8/lib/python3.8/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but LinearSVC was fitted with feature names
+  warnings.warn(
+[array([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+       0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0]), array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])]
