@@ -41,7 +41,7 @@ stripe_keys = {
     'publishable_key': 'pk_test_51JpGWQChgKx4d8ZkYMn6qdxfVaPZ3WfVHMhjF3QS5zDgZ214XJea9jPDGFukWXPBjLRxlzsklEheH7vCeYimlljF00zvSYeocw'
 }
 domain_url = "https://streetviewspectator.com/"
-rootPath="/var/www/flaskapp/flaskapp/uploads/"
+rootPath="/uploads/"
 stripe.api_key = stripe_keys['secret_key']
 
 app = Flask(__name__)
@@ -53,7 +53,7 @@ api = Api(app)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'fyp'
 
 # Intialize MySQL
@@ -748,7 +748,7 @@ def user_dashboard():
         if request.method == "POST":
             r=requests.get('https://ipinfo.io/'+request.remote_addr+'/json')
             r_data=r.json()
-            country=r_data['region']
+            # country=r_data['region']
             search = request.form['search']
             now = datetime.datetime.now()
             cursor = mysql.connection.cursor()
@@ -1248,6 +1248,7 @@ def charge():
     except stripe.error.InvalidRequestError as e:
         # Invalid parameters were supplied to Stripe's API
         flash('Payment Failed due to an Invalid Request. Please contact support.')
+        print(e)
         return redirect(url_for('price'))
     except stripe.error.AuthenticationError as e:
         # Authentication with Stripe's API failed
