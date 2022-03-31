@@ -670,7 +670,7 @@ def predict(dataset, username):
     elif(dataset=="hatespeech_offensive"):
         model = Model()
         model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
-        # model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
+        model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
         output=model.predict(df)
         output1=output.transpose()
         output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
@@ -679,8 +679,8 @@ def predict(dataset, username):
         return final
     elif(dataset=="negative_positive_neutral"):
         model = Model()
-        model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
-        # model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
+        # model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
+        model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
         output=model.predict(df)
         output1=output.transpose()
         output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
