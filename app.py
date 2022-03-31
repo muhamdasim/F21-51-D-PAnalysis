@@ -663,10 +663,10 @@ def predict(dataset, username):
         # model.addModel("static/models/humour_en/saved_model/svm.joblib")
         output=model.predict(df)
         output1=output.transpose()
-        output1=output1.rename({0: 'Not Funny', 1: 'Funny', 2: 'Neutral'}, axis='columns')
+        output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
         final=output1['max'].value_counts()
-        return final
+        return final,output1
     elif(dataset=="hatespeech_offensive"):
         model = Model()
         model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
@@ -676,7 +676,7 @@ def predict(dataset, username):
         output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
         final=output1['max'].value_counts()
-        return final
+        return final,output1
     elif(dataset=="negative_positive_neutral"):
         model = Model()
         model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
@@ -686,7 +686,7 @@ def predict(dataset, username):
         output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
         final=output1['max'].value_counts()
-        return final
+        return final,output1
 
 
 
@@ -805,8 +805,12 @@ def showreport():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from users_profile WHERE username=%s", [username])
     user_profile= cursor.fetchone()
-    a=[predict("humour",username), predict("hatespeech_offensive", username), predict("negative_positive_neutral", username)]
+    prediction_scale, prediction_keyword = predict("humour,username")
+    prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
+    prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
+    a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
     data= pd.concat(a)
+    print (data)
     data= data.to_dict()
     del a    
     # data= (humour_prediction | hatespeech_offensive_prediction)
