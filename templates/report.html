@@ -135,18 +135,8 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
 	</div>
   <div>
 
-    <table>
-      <thead>
-        <th>Tweet</th>
-        <th>Analysis</th>
-      </thead>
-      <tbody>
-        {% for key, value in humour_data.items() %}
-        <tr>{{key}}</tr>
-        <tr>{{value}}</tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {{ tweets_based_prediction.to_html() | safe}}
+
   </div>
 </div>
 </body>

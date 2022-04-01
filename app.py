@@ -657,6 +657,8 @@ def predict(dataset, username):
     cursor.execute("select * from tweets WHERE username=%s", [username])
     data= cursor.fetchall()
     df= pd.DataFrame(data)
+    tweets= df['content'].values.reshape(-1, 1)
+    
     if(dataset=="humour"):
         model = Model()
         model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
@@ -665,8 +667,10 @@ def predict(dataset, username):
         output1=output.transpose()
         output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+        
         final=output1['max'].value_counts()
-        return final,output1
+        return final, output1
     elif(dataset=="hatespeech_offensive"):
         model = Model()
         model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
@@ -675,8 +679,9 @@ def predict(dataset, username):
         output1=output.transpose()
         output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
         final=output1['max'].value_counts()
-        return final,output1
+        return final , output1
     elif(dataset=="negative_positive_neutral"):
         model = Model()
         model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
@@ -685,8 +690,10 @@ def predict(dataset, username):
         output1=output.transpose()
         output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+
         final=output1['max'].value_counts()
-        return final,output1
+        return final, output1
 
 
 
@@ -805,12 +812,15 @@ def showreport():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from users_profile WHERE username=%s", [username])
     user_profile= cursor.fetchone()
-    prediction_scale, prediction_keyword = predict("humour,username")
+    prediction_scale, prediction_keyword = predict("humour",username)
     prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
     prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
     a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
+    tweets_based_prediction= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
+    tweets_based_prediction= pd.concat(tweets_based_prediction)
+    print(tweets_based_prediction['tweet'])
+
     data= pd.concat(a)
-    print (data)
     data= data.to_dict()
     del a    
     # data= (humour_prediction | hatespeech_offensive_prediction)
@@ -820,7 +830,7 @@ def showreport():
     for pid in PyIdsToKill:
         os.system("taskkill /pid %i" % pid)
     
-    return render_template('report.html', humour_data=data, user_profile=user_profile)
+    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction)
 
 
 # faqs page
