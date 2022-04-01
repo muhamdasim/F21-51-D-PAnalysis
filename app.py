@@ -805,12 +805,10 @@ def showreport():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from users_profile WHERE username=%s", [username])
     user_profile= cursor.fetchone()
-    prediction_scale, prediction_keyword = predict("humour",username)
+    prediction_scale, prediction_keyword = predict("humour,username")
     prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
     prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
     a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
-    keywords= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
-    print(keywords)
     data= pd.concat(a)
     print (data)
     data= data.to_dict()
@@ -822,7 +820,7 @@ def showreport():
     for pid in PyIdsToKill:
         os.system("taskkill /pid %i" % pid)
     
-    return render_template('report.html', humour_data=data, user_profile=user_profile, keywords= keywords)
+    return render_template('report.html', humour_data=data, user_profile=user_profile)
 
 
 # faqs page
