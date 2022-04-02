@@ -653,7 +653,7 @@ def user_logout():
 
 
 #model_prediction
-def predict(username):
+def predict(dataset, username):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from tweets WHERE username=%s", [username])
     data= cursor.fetchall()
@@ -664,18 +664,41 @@ def predict(username):
     count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
 
     
-    model = Model()
-    model.addModel("static/models/random_forest.joblib")
-    # model.addModel("static/models/humour_en/saved_model/svm.joblib")
-    output=model.predict(df)
-    output1=output.transpose()
-    output1["max"] = output1.idxmax(axis=1)
-    output1["tweet"]= tweets
-    final=output1['max'].value_counts()
-    return count_10, final, output1
-       
-  
-       
+    if(dataset=="humour"):
+        model = Model()
+        model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
+        # model.addModel("static/models/humour_en/saved_model/svm.joblib")
+        output=model.predict(df)
+        output1=output.transpose()
+        output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
+        output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+        
+        final=output1['max'].value_counts()
+        return count_10, final, output1
+    elif(dataset=="hatespeech_offensive"):
+        model = Model()
+        model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
+        # model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
+        output=model.predict(df)
+        output1=output.transpose()
+        output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
+        output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+        final=output1['max'].value_counts()
+        return count_10, final, output1
+    elif(dataset=="negative_positive_neutral"):
+        model = Model()
+        model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
+        # model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
+        output=model.predict(df)
+        output1=output.transpose()
+        output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
+        output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+
+        final=output1['max'].value_counts()
+        return count_10, final, output1
 
 
 
@@ -796,10 +819,15 @@ def showreport():
     user_profile= cursor.fetchone()
     cursor.execute("SELECT count(content), MONTH(tweetTS) FROM tweets WHERE UPPER(content) LIKE UPPER('%% Spacex %%') GROUP BY MONTH(tweetTS)")
     dates= cursor.fetchall()
-    count, prediction_scale, prediction_keyword = predict(username)
-    a=[prediction_scale]
-    tweets_based_prediction= [prediction_keyword]
+
+
+    count, prediction_scale, prediction_keyword = predict("humour",username)
+    count, prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
+    count, prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
+    a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
+    tweets_based_prediction= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
     tweets_based_prediction= pd.concat(tweets_based_prediction)
+    print(tweets_based_prediction['tweet'])
 
     data= pd.concat(a)
     data= data.to_dict()
