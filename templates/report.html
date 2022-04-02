@@ -117,13 +117,51 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
                   <li class="list-group-item"><b>Followers Count:</b> {{user_profile.followersCount}}</li>
                   <li class="list-group-item"><b>Verified:</b> {{user_profile.isVerified}}</li>
 
+
               </ul>
               </div>
       </div>
      
   </div>
 </div>
+<div class="table-responsive">
+  <h3>Top 10 Words Used</h3>
+  <table class="table">
+      <thead>
+          <tr>
 
+
+              <th scope="col">Word</th>
+              <th scope="col">Occurences</th>
+          </tr>
+      </thead>
+
+      
+
+
+        {% for row in count %}
+      <tbody>
+
+
+          <tr class="bg-blue">
+              <td class="pt-3 mt-1">{{row[0]}}</td>
+              <td class="pt-3 mt-1">{{row[1]}}</td>
+             
+
+              
+            </tr>
+
+      </tbody>
+        {% endfor %}
+
+      
+
+
+  </table>
+
+ 
+
+</div>
 	<div style="margin: 10px 0 0 10px;width: 1000px;">
 		<h3>Personality Analysis</h3>
 		
@@ -132,12 +170,11 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
 		<div id="humour_chart" ></div>
         <div id="hatespeechOffensive_chart" ></div>
         <div id="negative_positive_neutral_chart" style="width: 900px; height: 500px;"></div>
+        
+
 	</div>
-  <div>
-
-    {{ tweets_based_prediction.to_html() | safe}}
-
-  </div>
+  
+  
 </div>
 </body>
 {% endblock %}

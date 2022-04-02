@@ -31,6 +31,7 @@ from scraper import Scraper
 from models import Model
 import pandas as pd
 import numpy
+from collections import Counter
 import gc
 
 
@@ -657,7 +658,11 @@ def predict(username):
     cursor.execute("select * from tweets WHERE username=%s", [username])
     data= cursor.fetchall()
     df= pd.DataFrame(data)
+
+    #getting top 10 words
     tweets= df['content'].values.reshape(-1, 1)
+    count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
+
     
     model = Model()
     model.addModel("static/models/random_forest.joblib")
@@ -667,7 +672,7 @@ def predict(username):
     output1["max"] = output1.idxmax(axis=1)
     output1["tweet"]= tweets
     final=output1['max'].value_counts()
-    return final, output1
+    return count_10, final, output1
        
   
        
@@ -789,26 +794,20 @@ def showreport():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from users_profile WHERE username=%s", [username])
     user_profile= cursor.fetchone()
-    prediction_scale, prediction_keyword = predict(username)
-    # prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
-    # prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
+    count, prediction_scale, prediction_keyword = predict(username)
     a=[prediction_scale]
     tweets_based_prediction= [prediction_keyword]
     tweets_based_prediction= pd.concat(tweets_based_prediction)
-    # print(tweets_based_prediction['tweet'])
-    # prediction_scale, prediction_keyword= predict(username)
 
     data= pd.concat(a)
     data= data.to_dict()
     del a    
-    # data= (humour_prediction | hatespeech_offensive_prediction)
-
     PyIds = [int(line.split()[1]) for line in os.popen('tasklist').readlines()[3:] if line.split()[0] == "python.exe"]
     PyIdsToKill = [id for id in PyIds if id != os.getpid()]
     for pid in PyIdsToKill:
         os.system("taskkill /pid %i" % pid)
     
-    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction)
+    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction, count= count)
 
 
 # faqs page
