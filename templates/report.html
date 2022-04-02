@@ -80,6 +80,32 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
         
       }
     </script>
+     <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Month', 'Tweets'],
+			{% for row in dates %}
+				{% if row.0 is string %}
+					['{{row.1 }}', '{{ row.0 }}'],
+				{% else %}
+					['{{ row.1 }}', {{ row.0 }}],
+				{% endif %}
+			{% endfor %}
+        ]);
+
+        var options = {
+          title: 'Keyword Analysis ',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('date_keyword_graph'));
+        chart.draw(data, options);
+        
+      }
+    </script>
 
 <div class="container mt-3 mb-3">
   <div class="d-flex flex-row align-items-center"></div>
@@ -170,6 +196,7 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
 		<div id="humour_chart" ></div>
         <div id="hatespeechOffensive_chart" ></div>
         <div id="negative_positive_neutral_chart" style="width: 900px; height: 500px;"></div>
+        <div id="date_keyword_graph" style="width: 900px; height: 500px;"></div>
         
 
 	</div>

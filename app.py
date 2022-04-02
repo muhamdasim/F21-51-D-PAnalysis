@@ -794,6 +794,8 @@ def showreport():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from users_profile WHERE username=%s", [username])
     user_profile= cursor.fetchone()
+    cursor.execute("SELECT count(content), MONTH(tweetTS) FROM tweets WHERE UPPER(content) LIKE UPPER('%% Spacex %%') GROUP BY MONTH(tweetTS)")
+    dates= cursor.fetchall()
     count, prediction_scale, prediction_keyword = predict(username)
     a=[prediction_scale]
     tweets_based_prediction= [prediction_keyword]
@@ -807,7 +809,7 @@ def showreport():
     for pid in PyIdsToKill:
         os.system("taskkill /pid %i" % pid)
     
-    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction, count= count)
+    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction, count= count,dates= dates)
 
 
 # faqs page
