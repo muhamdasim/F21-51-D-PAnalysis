@@ -68,9 +68,13 @@ final_key = ''.join(random.choice(letters) for i in range(key))
 
 
 
-@app.route("/user-dashboard")
+@app.route("/user_dashboard")
 def user_dashboard():
     return render_template("user-dashboard.html")
+
+@app.route("/user_edit_profile")
+def user_edit_profile():
+    return render_template("user-edit-profile.html")
 
 
 
