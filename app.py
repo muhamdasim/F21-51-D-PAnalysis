@@ -76,6 +76,9 @@ def user_dashboard():
 def user_edit_profile():
     return render_template("user-edit-profile.html")
 
+@app.route("/user_groups")
+def user_edit_profile():
+    return render_template("user-groups.html")
 
 
 @app.route("/uploads/<path>",methods = ['POST', 'GET'])
