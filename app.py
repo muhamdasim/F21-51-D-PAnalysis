@@ -84,6 +84,14 @@ def user_edit_profile():
 def user_edit_profile():
     return render_template("user-queries.html")
 
+@app.route("/user_view_report")
+def user_view_report():
+    return render_template("user-view-report.html")
+
+@app.route("/admin_dashboard")
+def admin_dashboard():
+    return render_template("admin-dashboard.html")
+
 @app.route("/uploads/<path>",methods = ['POST', 'GET'])
 def DownloadLogFile (path = None):
         path=os.path.abspath(rootPath+path)
