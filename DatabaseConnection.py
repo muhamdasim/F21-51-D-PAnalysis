@@ -1,25 +1,37 @@
 from MySQLdb import Connect, connect
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
+import mysql.connector
 
-class DatabaseConnection(object):
+
+class DatabaseConnection():
     
-    def __init__(self, app, host, user, password, db):
-        self.host = host 
-        self.user = user 
-        self.password = password 
-        self.db = db 
-        app.config['MYSQL_HOST'] = self.host
-        app.config['MYSQL_USER'] = 'root'
-        app.config['MYSQL_PASSWORD'] = ''
-        app.config['MYSQL_DB'] = 'fyp'
-        self.mysql = MySQL(app)
-        self.app = app
+    def __init__(self):
+        self.host= "localhost"
 
     def getFreshConnection(self):
-        cursor = self.mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        return cursor
+        db = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            charset='utf8mb4',
+            password="",
+            database="fyp"
+        )
 
+        if db.is_connected():
+            print("You're connected to database!")
+        else:
+            print("Error Connection!")
+        cursor = db.cursor()
+        return cursor, db
+
+    def close_connection(self,cursor,db):
+        cursor.close()
+        db.close()
+        if not db.is_connected():
+            print("MySQL connection is closed")
+        else:
+            print("Connection is not closed Successfully!")
     def setHost(self, host):
         self.host = host 
     def getHost(self):
