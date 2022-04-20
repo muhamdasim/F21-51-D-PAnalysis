@@ -1,13 +1,20 @@
 from DatabaseConnection import DatabaseConnection
 import time
-
+from scraper import Scraper
 
 class Predicting():
     def __init__(self):
         self.queries = []
         self.db = DatabaseConnection()
 
-    def scraper(self):
+    def scrape(self, username):
+        obj = Scraper(username)
+        cursor, db = self.db.getFreshConnection()
+        obj.populateUserData(cursor)
+        obj.populateUserTweets(10, cursor)
+        db.commit()
+        self.db.close_connection(cursor, db)
+    def predict(self):
         
         while(1):
             cursor, db = self.db.getFreshConnection()
@@ -36,20 +43,22 @@ class Predicting():
                 db.commit()
                 self.db.close_connection(cursor, db)
                 try:
-                    time.sleep(120)
+                    
                     cursor, db = self.db.getFreshConnection()
-                    cursor.execute("UPDATE `row` set status = 1, last_scraped=CURRENT_TIMESTAMP where query_id= %s",[row[0]])
+                    cursor.execute("UPDATE `query` set status = 1 where id= %s",[row[0]])
                     db.commit()
+                    self.db.close_connection(cursor, db)
+                    self.scrape(row[2])
                 except Exception as e:
                     cursor, db = self.db.getFreshConnection()
                     print("Exception")
                     print(e )
-                    cursor.execute("UPDATE `row` set status = 3 where query_id= %s",[row[0]])
+                    cursor.execute("UPDATE `query` set status = 3 where id= %s",[row[0]])
                     db.commit()
-                self.db.close_connection(cursor, db)
+                    self.db.close_connection(cursor, db)
 
 
 
 obj = Predicting()
-obj.scraper()
+obj.predict()
 time.sleep(5)
