@@ -31,6 +31,7 @@ from scraper import Scraper
 from models import Model
 import pandas as pd
 import numpy
+from collections import Counter
 import gc
 
 
@@ -41,7 +42,7 @@ stripe_keys = {
     'publishable_key': 'pk_test_51JpGWQChgKx4d8ZkYMn6qdxfVaPZ3WfVHMhjF3QS5zDgZ214XJea9jPDGFukWXPBjLRxlzsklEheH7vCeYimlljF00zvSYeocw'
 }
 domain_url = "https://streetviewspectator.com/"
-rootPath="/var/www/flaskapp/flaskapp/uploads/"
+rootPath="/uploads/"
 stripe.api_key = stripe_keys['secret_key']
 
 app = Flask(__name__)
@@ -53,7 +54,7 @@ api = Api(app)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'fyp'
 
 # Intialize MySQL
@@ -657,36 +658,47 @@ def predict(dataset, username):
     cursor.execute("select * from tweets WHERE username=%s", [username])
     data= cursor.fetchall()
     df= pd.DataFrame(data)
+
+    #getting top 10 words
+    tweets= df['content'].values.reshape(-1, 1)
+    count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
+
+    
     if(dataset=="humour"):
         model = Model()
         model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
         # model.addModel("static/models/humour_en/saved_model/svm.joblib")
         output=model.predict(df)
         output1=output.transpose()
-        output1=output1.rename({0: 'Not Funny', 1: 'Funny', 2: 'Neutral'}, axis='columns')
+        output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+        
         final=output1['max'].value_counts()
-        return final
+        return count_10, final, output1
     elif(dataset=="hatespeech_offensive"):
         model = Model()
         model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
-        model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
+        # model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
         output=model.predict(df)
         output1=output.transpose()
         output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
         final=output1['max'].value_counts()
-        return final
+        return count_10, final, output1
     elif(dataset=="negative_positive_neutral"):
         model = Model()
-        # model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
-        model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
+        model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
+        # model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
         output=model.predict(df)
         output1=output.transpose()
         output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
         output1["max"] = output1.idxmax(axis=1)
+        output1["tweet"]= tweets
+
         final=output1['max'].value_counts()
-        return final
+        return count_10, final, output1
 
 
 
@@ -748,7 +760,7 @@ def user_dashboard():
         if request.method == "POST":
             r=requests.get('https://ipinfo.io/'+request.remote_addr+'/json')
             r_data=r.json()
-            country=r_data['region']
+            # country=r_data['region']
             search = request.form['search']
             now = datetime.datetime.now()
             cursor = mysql.connection.cursor()
@@ -805,18 +817,27 @@ def showreport():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("select * from users_profile WHERE username=%s", [username])
     user_profile= cursor.fetchone()
-    a=[predict("humour",username), predict("hatespeech_offensive", username), predict("negative_positive_neutral", username)]
+    cursor.execute("SELECT count(content), MONTH(tweetTS) FROM tweets WHERE UPPER(content) LIKE UPPER('%% Spacex %%') GROUP BY MONTH(tweetTS)")
+    dates= cursor.fetchall()
+
+
+    count, prediction_scale, prediction_keyword = predict("humour",username)
+    count, prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
+    count, prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
+    a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
+    tweets_based_prediction= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
+    tweets_based_prediction= pd.concat(tweets_based_prediction)
+    print(tweets_based_prediction['tweet'])
+
     data= pd.concat(a)
     data= data.to_dict()
     del a    
-    # data= (humour_prediction | hatespeech_offensive_prediction)
-
     PyIds = [int(line.split()[1]) for line in os.popen('tasklist').readlines()[3:] if line.split()[0] == "python.exe"]
     PyIdsToKill = [id for id in PyIds if id != os.getpid()]
     for pid in PyIdsToKill:
         os.system("taskkill /pid %i" % pid)
     
-    return render_template('report.html', humour_data=data, user_profile=user_profile)
+    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction, count= count,dates= dates)
 
 
 # faqs page
@@ -1248,6 +1269,7 @@ def charge():
     except stripe.error.InvalidRequestError as e:
         # Invalid parameters were supplied to Stripe's API
         flash('Payment Failed due to an Invalid Request. Please contact support.')
+        print(e)
         return redirect(url_for('price'))
     except stripe.error.AuthenticationError as e:
         # Authentication with Stripe's API failed

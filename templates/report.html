@@ -80,6 +80,32 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
         
       }
     </script>
+     <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        ['Month', 'Tweets'],
+			{% for row in dates %}
+				{% if row.0 is string %}
+					['{{row.1 }}', '{{ row.0 }}'],
+				{% else %}
+					['{{ row.1 }}', {{ row.0 }}],
+				{% endif %}
+			{% endfor %}
+        ]);
+
+        var options = {
+          title: 'Keyword Analysis ',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('date_keyword_graph'));
+        chart.draw(data, options);
+        
+      }
+    </script>
 
 <div class="container mt-3 mb-3">
   <div class="d-flex flex-row align-items-center"></div>
@@ -117,13 +143,51 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
                   <li class="list-group-item"><b>Followers Count:</b> {{user_profile.followersCount}}</li>
                   <li class="list-group-item"><b>Verified:</b> {{user_profile.isVerified}}</li>
 
+
               </ul>
               </div>
       </div>
      
   </div>
 </div>
+<div class="table-responsive">
+  <h3>Top 10 Words Used</h3>
+  <table class="table">
+      <thead>
+          <tr>
 
+
+              <th scope="col">Word</th>
+              <th scope="col">Occurences</th>
+          </tr>
+      </thead>
+
+      
+
+
+        {% for row in count %}
+      <tbody>
+
+
+          <tr class="bg-blue">
+              <td class="pt-3 mt-1">{{row[0]}}</td>
+              <td class="pt-3 mt-1">{{row[1]}}</td>
+             
+
+              
+            </tr>
+
+      </tbody>
+        {% endfor %}
+
+      
+
+
+  </table>
+
+ 
+
+</div>
 	<div style="margin: 10px 0 0 10px;width: 1000px;">
 		<h3>Personality Analysis</h3>
 		
@@ -132,7 +196,12 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
 		<div id="humour_chart" ></div>
         <div id="hatespeechOffensive_chart" ></div>
         <div id="negative_positive_neutral_chart" style="width: 900px; height: 500px;"></div>
+        <div id="date_keyword_graph" style="width: 900px; height: 500px;"></div>
+        
+
 	</div>
+  
+  
 </div>
 </body>
 {% endblock %}
