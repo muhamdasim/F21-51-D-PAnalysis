@@ -9,7 +9,7 @@ class Predicting():
         self.queries = []
         self.db = DatabaseConnection()
     #model_prediction
-    def predict(self, dataset, username):
+    def make_prediction(self, dataset, username):
         cursor, db = self.db.getFreshConnection()
         cursor.execute("select * from tweets WHERE username=%s", [username])
         data= cursor.fetchall()
