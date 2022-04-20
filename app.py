@@ -787,8 +787,8 @@ def user_dashboard():
                     mysql.connection.commit()
                     username = search
                     obj = Scraper(username)
-                    obj.populateUserData(cursor)
-                    obj.populateUserTweets(10, cursor)
+                    obj.populateUserData(db)
+                    obj.populateUserTweets(10, db)
                     db.execute("update query set status=1 where status=0 and keyword=%s and user_id=%s;", (username, session['id']))
 
                     mysql.connection.commit()
