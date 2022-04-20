@@ -80,6 +80,9 @@ def user_edit_profile():
 def user_edit_profile():
     return render_template("user-groups.html")
 
+@app.route("/user_queries")
+def user_edit_profile():
+    return render_template("user-queries.html")
 
 @app.route("/uploads/<path>",methods = ['POST', 'GET'])
 def DownloadLogFile (path = None):
