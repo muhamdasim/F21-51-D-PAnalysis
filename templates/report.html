@@ -190,7 +190,38 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
 </div>
 <div class="table-responsive">
   <h3>Prediction for individual Tweets</h3>
-  {{ tweets_based_prediction.to_html() | safe}}
+  <table class="table">
+    <thead>
+        <tr>
+
+
+            <th scope="col">Tweet</th>
+            <th scope="col">Prediction</th>
+        </tr>
+    </thead>
+
+    
+
+
+      {% for row in tweets_based_prediction %}
+    <tbody>
+
+
+        <tr class="bg-blue">
+            <td class="pt-3 mt-1">{{row[5]}}</td>
+            <td class="pt-3 mt-1">{{row[2]}}</td>
+           
+
+            
+          </tr>
+
+    </tbody>
+      {% endfor %}
+
+    
+
+
+</table>
 
  
 

@@ -27,8 +27,6 @@ from flask_restful import Resource, Api
 import time
 import csv
 from passlib.hash import sha256_crypt
-from scraper import Scraper
-from models import Model
 import pandas as pd
 import numpy
 from collections import Counter
@@ -655,7 +653,7 @@ def user_logout():
 #model_prediction
 def predict(dataset, username):
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute("select * from tweets WHERE username=%s", [username])
+    cursor.execute("SELECT tweets_prediction.*, tweets.content from tweets_prediction inner join tweets on tweets_prediction.tweet_id = tweets.id where tweets.username=%s", [username])
     data= cursor.fetchall()
     df= pd.DataFrame(data)
 
@@ -663,41 +661,18 @@ def predict(dataset, username):
     tweets= df['content'].values.reshape(-1, 1)
     count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
 
-    
+    output1= df
     if(dataset=="humour"):
-        model = Model()
-        model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
-        # model.addModel("static/models/humour_en/saved_model/svm.joblib")
-        output=model.predict(df)
-        output1=output.transpose()
-        output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
-        output1["max"] = output1.idxmax(axis=1)
         output1["tweet"]= tweets
-        
-        final=output1['max'].value_counts()
+        final=output1['humour'].value_counts()
         return count_10, final, output1
     elif(dataset=="hatespeech_offensive"):
-        model = Model()
-        model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
-        # model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
-        output=model.predict(df)
-        output1=output.transpose()
-        output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
-        output1["max"] = output1.idxmax(axis=1)
         output1["tweet"]= tweets
-        final=output1['max'].value_counts()
+        final=output1['hatespeech_offensive'].value_counts()
         return count_10, final, output1
     elif(dataset=="negative_positive_neutral"):
-        model = Model()
-        model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
-        # model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
-        output=model.predict(df)
-        output1=output.transpose()
-        output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
-        output1["max"] = output1.idxmax(axis=1)
         output1["tweet"]= tweets
-
-        final=output1['max'].value_counts()
+        final=output1['negative_positive_neutral'].value_counts()
         return count_10, final, output1
 
 
@@ -775,23 +750,6 @@ def user_dashboard():
                     cursor.execute("insert into query (id,date,keyword,status,user_id) values (NULL,%s,%s,'1',%s);",
                                 (now, search, s_id))
                     mysql.connection.commit()
-                    cursor.execute("select id from query where user_id=%s order by date desc;", [session['id']])
-                    Data = cursor.fetchone()
-                    flash("Your new search is in progress - please check your search history for the latest status.")
-                    #try:
-                    # planDetails['tLimit']
-                    db = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-                    db.execute('SET NAMES utf8mb4')
-                    db.execute("SET CHARACTER SET utf8mb4")
-                    db.execute("SET character_set_connection=utf8mb4")
-                    mysql.connection.commit()
-                    username = search
-                    obj = Scraper(username)
-                    obj.populateUserData(db)
-                    obj.populateUserTweets(10, db)
-                    db.execute("update query set status=1 where status=0 and keyword=%s and user_id=%s;", (username, session['id']))
-
-                    mysql.connection.commit()
 
                     #except:
                     #pass
@@ -820,27 +778,19 @@ def showreport():
     cursor.execute("SELECT count(content), MONTH(tweetTS) FROM tweets WHERE UPPER(content) LIKE UPPER('%% Spacex %%') GROUP BY MONTH(tweetTS)")
     dates= cursor.fetchall()
 
+    cursor.execute("SELECT tweets_prediction.*, tweets.content from tweets_prediction inner join tweets on tweets_prediction.tweet_id = tweets.id where tweets.username=%s", [username])
+    tweets_based_prediction = cursor.fetchall()
 
-    count, prediction_scale, prediction_keyword = predict("humour",username)
-    count, prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
-    count, prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
-    a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
-    tweets_based_prediction= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
-    tweets_based_prediction= pd.concat(tweets_based_prediction)
-    tweets_based_prediction = tweets_based_prediction.drop("Neutral", axis=1)
-    tweets_based_prediction = tweets_based_prediction.drop("Funny", axis=1)
-    tweets_based_prediction = tweets_based_prediction.drop("Offensive", axis=1)
-    tweets_based_prediction = tweets_based_prediction.drop("Positive", axis=1)
-    tweets_based_prediction = tweets_based_prediction.drop("Negative", axis=1)
+    df = pd.DataFrame(tweets_based_prediction)
+    count = Counter(" ".join(df["content"]).split()).most_common(10)
+    df['humour'].value_counts()
+    a=[df['humour'].value_counts(), df['hatespeech_offensive'].value_counts(), df['negative_positive_neutral'].value_counts()]
+    
 
 
     data= pd.concat(a)
     data= data.to_dict()
     del a    
-    PyIds = [int(line.split()[1]) for line in os.popen('tasklist').readlines()[3:] if line.split()[0] == "python.exe"]
-    PyIdsToKill = [id for id in PyIds if id != os.getpid()]
-    for pid in PyIdsToKill:
-        os.system("taskkill /pid %i" % pid)
     
     return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction, count= count,dates= dates)
 

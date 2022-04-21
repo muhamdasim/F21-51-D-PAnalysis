@@ -107,7 +107,7 @@ class Predicting():
         obj.populateUserData(cursor)
 
         # scrape tweets from twitter and start inserting into the database
-        obj.populateUserTweets(10, cursor)
+        obj.populateUserTweets(100, cursor)
         db.commit()
         self.db.close_connection(cursor, db)
 
@@ -144,6 +144,8 @@ class Predicting():
                 # close the connection so other nodes could start processing
                 self.db.close_connection(cursor, db)
                 try:
+                    self.scrape(row[2])
+                    
 
                     # try making the prediction given the username 
                     # if an error occurs, exception would be handled
@@ -156,7 +158,6 @@ class Predicting():
                     cursor.execute("UPDATE `query` set status = 4 where id= %s",[row[0]])
                     db.commit()
                     self.db.close_connection(cursor, db)
-                    self.scrape(row[2])
                 except Exception as e:
                     cursor, db = self.db.getFreshConnection()
                     print("Exception")
