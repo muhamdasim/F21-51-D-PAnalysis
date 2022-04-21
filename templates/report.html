@@ -188,6 +188,13 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
  
 
 </div>
+<div class="table-responsive">
+  <h3>Prediction for individual Tweets</h3>
+  {{ tweets_based_prediction.to_html() | safe}}
+
+ 
+
+</div>
 	<div style="margin: 10px 0 0 10px;width: 1000px;">
 		<h3>Personality Analysis</h3>
 		

@@ -827,7 +827,12 @@ def showreport():
     a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
     tweets_based_prediction= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
     tweets_based_prediction= pd.concat(tweets_based_prediction)
-    print(tweets_based_prediction['tweet'])
+    tweets_based_prediction = tweets_based_prediction.drop("Neutral", axis=1)
+    tweets_based_prediction = tweets_based_prediction.drop("Funny", axis=1)
+    tweets_based_prediction = tweets_based_prediction.drop("Offensive", axis=1)
+    tweets_based_prediction = tweets_based_prediction.drop("Positive", axis=1)
+    tweets_based_prediction = tweets_based_prediction.drop("Negative", axis=1)
+
 
     data= pd.concat(a)
     data= data.to_dict()

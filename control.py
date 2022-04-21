@@ -8,54 +8,71 @@ class Predicting():
     def __init__(self):
         self.queries = []
         self.db = DatabaseConnection()
+
     #model_prediction
-    def make_prediction(self, dataset, username):
+
+    #it takes a username as argument, fetch tweets from the database
+    # call the model class
+    # record predictions and insert back into database
+    def make_prediction(self, username):
         cursor, db = self.db.getFreshConnection()
         cursor.execute("select * from tweets WHERE username=%s", [username])
         data= cursor.fetchall()
+        self.db.close_connection(cursor, db)
+
         df= pd.DataFrame(data)
 
         #getting top 10 words
-        tweets= df['content'].values.reshape(-1, 1)
+        ids= df['id'].values.reshape(-1,1)
         count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
+        # create a model object
+        model = Model()
+        model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
 
+
+        # analysing humour prediction first 
+        humour_df=model.predict(df)
+        humour_df=humour_df.transpose()
+        humour_df=humour_df.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
+        output = pd.DataFrame()
+        output["humour"] = humour_df.idxmax(axis=1)
+        output["tweet_id"]= ids
+
+
+        # hatespeech offensive prediction
+        model = Model()
+        model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
+        hatespeech_offensive=model.predict(df)
+        hatespeech_offensive=hatespeech_offensive.transpose()
+        hatespeech_offensive=hatespeech_offensive.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
+        # appendinge hatespeech_offensive to existing dataframe
+        output["hatespeech_offensive"] = hatespeech_offensive.idxmax(axis=1)
+
+
+        # negative positive neutral prediction
+        model = Model()
+        model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
+        negativePositiveNeutral=model.predict(df)
+        negativePositiveNeutral=negativePositiveNeutral.transpose()
+        negativePositiveNeutral=negativePositiveNeutral.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
+        output["negative_positive_neutral"] = negativePositiveNeutral.idxmax(axis=1)
+
+        cursor, db = self.db.getFreshConnection()
         
-        if(dataset=="humour"):
-            model = Model()
-            model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
-            # model.addModel("static/models/humour_en/saved_model/svm.joblib")
-            output=model.predict(df)
-            output1=output.transpose()
-            output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
-            output1["max"] = output1.idxmax(axis=1)
-            output1["tweet"]= tweets
-            
-            final=output1['max'].value_counts()
-            return count_10, final, output1
-        elif(dataset=="hatespeech_offensive"):
-            model = Model()
-            model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
-            # model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
-            output=model.predict(df)
-            output1=output.transpose()
-            output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
-            output1["max"] = output1.idxmax(axis=1)
-            output1["tweet"]= tweets
-            final=output1['max'].value_counts()
-            return count_10, final, output1
-        elif(dataset=="negative_positive_neutral"):
-            model = Model()
-            model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
-            # model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
-            output=model.predict(df)
-            output1=output.transpose()
-            output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
-            output1["max"] = output1.idxmax(axis=1)
-            output1["tweet"]= tweets
+        cols = "`,`".join([str(i) for i in output.columns.tolist()])
 
-            final=output1['max'].value_counts()
-            return count_10, final, output1
+        # Insert DataFrame recrds one by one.
+        for i,row in data.iterrows():
+            sql = "INSERT INTO `tweets_prediction` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
+            cursor.execute(sql, tuple(row))
 
+        # the connection is not autocommitted by default, so we must commit to save our changes
+        db.commit()
+        self.db.close_connection(cursor, db)
+
+
+    
+    
 
     def scrape(self, username):
         obj = Scraper(username)
@@ -93,9 +110,9 @@ class Predicting():
                 db.commit()
                 self.db.close_connection(cursor, db)
                 try:
-                    
+                    self.make_prediction(row[2])
                     cursor, db = self.db.getFreshConnection()
-                    cursor.execute("UPDATE `query` set status = 1 where id= %s",[row[0]])
+                    cursor.execute("UPDATE `query` set status = 4 where id= %s",[row[0]])
                     db.commit()
                     self.db.close_connection(cursor, db)
                     self.scrape(row[2])
