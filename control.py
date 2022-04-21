@@ -21,10 +21,9 @@ class Predicting():
         self.db.close_connection(cursor, db)
 
         df= pd.DataFrame(data)
-
-        #getting top 10 words
+        print(df)
+        df.columns =['id', 'tweetID', 'content', 'tweetTS', 'username']
         ids= df['id'].values.reshape(-1,1)
-        count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
         # create a model object
         model = Model()
         model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
@@ -62,7 +61,7 @@ class Predicting():
         cols = "`,`".join([str(i) for i in output.columns.tolist()])
 
         # Insert DataFrame recrds one by one.
-        for i,row in data.iterrows():
+        for i,row in output.iterrows():
             sql = "INSERT INTO `tweets_prediction` (`" +cols + "`) VALUES (" + "%s,"*(len(row)-1) + "%s)"
             cursor.execute(sql, tuple(row))
 
@@ -109,20 +108,20 @@ class Predicting():
                 cursor.execute("UPDATE `query` set status = 2 where id= %s",[row[0]])
                 db.commit()
                 self.db.close_connection(cursor, db)
-                try:
+                if 1==1:
                     self.make_prediction(row[2])
                     cursor, db = self.db.getFreshConnection()
                     cursor.execute("UPDATE `query` set status = 4 where id= %s",[row[0]])
                     db.commit()
                     self.db.close_connection(cursor, db)
                     self.scrape(row[2])
-                except Exception as e:
-                    cursor, db = self.db.getFreshConnection()
-                    print("Exception")
-                    print(e )
-                    cursor.execute("UPDATE `query` set status = 3 where id= %s",[row[0]])
-                    db.commit()
-                    self.db.close_connection(cursor, db)
+                # except Exception as e:
+                #     cursor, db = self.db.getFreshConnection()
+                #     print("Exception")
+                #     print(e )
+                #     cursor.execute("UPDATE `query` set status = 3 where id= %s",[row[0]])
+                #     db.commit()
+                #     self.db.close_connection(cursor, db)
 
 
 
