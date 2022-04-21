@@ -1,3 +1,18 @@
+# This python program would run and check if there's a query that needs to be processed
+# each query has a status
+# if the status of query says that it needs to be started, the program would fetch the data related to that query and start processing
+# before processing, the program would change the status of query to working so no other node would try to access that
+# this prevents two nodes working on the same query
+# if an error occurs, it handles the exception and change the status of the query to error and move on to the next query if available
+# if no query is available, it would sleep for a while and then again look if any query is ready to start
+
+# in case of error, it would not stop, rather start looking for another query
+
+# database class handles the opening and closing of the connection
+# a connection is closed as soon as it is no longer required so there can be multiple nodes accessing to the database without getting deadlock
+
+
+
 from DatabaseConnection import DatabaseConnection
 import time
 from scraper import Scraper
@@ -15,14 +30,22 @@ class Predicting():
     # call the model class
     # record predictions and insert back into database
     def make_prediction(self, username):
+
+        # create connection
         cursor, db = self.db.getFreshConnection()
+
+        # get tweets from the database
         cursor.execute("select * from tweets WHERE username=%s", [username])
         data= cursor.fetchall()
         self.db.close_connection(cursor, db)
 
+        # store it in pandas
         df= pd.DataFrame(data)
-        print(df)
+
+        #assigning columns to the dataframe
         df.columns =['id', 'tweetID', 'content', 'tweetTS', 'username']
+
+        # To have the output dataframe, we must have the id of the dataframe to insert into database
         ids= df['id'].values.reshape(-1,1)
         # create a model object
         model = Model()
@@ -58,6 +81,7 @@ class Predicting():
 
         cursor, db = self.db.getFreshConnection()
         
+        # generating list of columns to insert into database
         cols = "`,`".join([str(i) for i in output.columns.tolist()])
 
         # Insert DataFrame recrds one by one.
@@ -67,23 +91,34 @@ class Predicting():
 
         # the connection is not autocommitted by default, so we must commit to save our changes
         db.commit()
+
+        # close the connection after accomplishing the task
         self.db.close_connection(cursor, db)
 
 
     
     
-
+    # a function that users the scraper class to scrape the data from the twitter and inserts into the database
     def scrape(self, username):
         obj = Scraper(username)
         cursor, db = self.db.getFreshConnection()
+
+        # populate user data from twitter like the photo, number of followers etc
         obj.populateUserData(cursor)
+
+        # scrape tweets from twitter and start inserting into the database
         obj.populateUserTweets(10, cursor)
         db.commit()
         self.db.close_connection(cursor, db)
+
+    # this funciton acts as the query handler for the prediction model
+    # it looks if a query needs attention and then call the make_prediction function to predict the data and store it back to the database
     def predict(self):
         
         while(1):
             cursor, db = self.db.getFreshConnection()
+
+            # getting the queries which have status => ready to start <= only
             cursor.execute('''select * from query where status =1
             limit 1
 
@@ -92,6 +127,7 @@ class Predicting():
 
             row = cursor.fetchone()
                
+            # if there is no query which is ready to start, then sleep for 10 seconds
             if(row is None):
                 self.db.close_connection(cursor, db)
                 print("sleeping")
@@ -101,16 +137,22 @@ class Predicting():
             else:
                 # a data exist to be scraped
 
-                #change the status of the data
-                
-
-                
+                #change the status of the data to working
                 cursor.execute("UPDATE `query` set status = 2 where id= %s",[row[0]])
                 db.commit()
+
+                # close the connection so other nodes could start processing
                 self.db.close_connection(cursor, db)
                 try:
+
+                    # try making the prediction given the username 
+                    # if an error occurs, exception would be handled
                     self.make_prediction(row[2])
+
+                    # if the prediction goes well, then update the status to completed
                     cursor, db = self.db.getFreshConnection()
+
+
                     cursor.execute("UPDATE `query` set status = 4 where id= %s",[row[0]])
                     db.commit()
                     self.db.close_connection(cursor, db)
