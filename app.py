@@ -77,11 +77,11 @@ def user_edit_profile():
     return render_template("user-edit-profile.html")
 
 @app.route("/user_groups")
-def user_edit_profile():
+def user_groups():
     return render_template("user-groups.html")
 
 @app.route("/user_queries")
-def user_edit_profile():
+def user_queries():
     return render_template("user-queries.html")
 
 @app.route("/user_view_report")
