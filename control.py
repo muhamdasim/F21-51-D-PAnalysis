@@ -108,20 +108,20 @@ class Predicting():
                 cursor.execute("UPDATE `query` set status = 2 where id= %s",[row[0]])
                 db.commit()
                 self.db.close_connection(cursor, db)
-                if 1==1:
+                try:
                     self.make_prediction(row[2])
                     cursor, db = self.db.getFreshConnection()
                     cursor.execute("UPDATE `query` set status = 4 where id= %s",[row[0]])
                     db.commit()
                     self.db.close_connection(cursor, db)
                     self.scrape(row[2])
-                # except Exception as e:
-                #     cursor, db = self.db.getFreshConnection()
-                #     print("Exception")
-                #     print(e )
-                #     cursor.execute("UPDATE `query` set status = 3 where id= %s",[row[0]])
-                #     db.commit()
-                #     self.db.close_connection(cursor, db)
+                except Exception as e:
+                    cursor, db = self.db.getFreshConnection()
+                    print("Exception")
+                    print(e )
+                    cursor.execute("UPDATE `query` set status = 3 where id= %s",[row[0]])
+                    db.commit()
+                    self.db.close_connection(cursor, db)
 
 
 
