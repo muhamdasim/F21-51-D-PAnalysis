@@ -150,8 +150,12 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
      
   </div>
 </div>
-<div class="table-responsive">
-  <h3>Top 10 Words Used</h3>
+<h3>Top 10 Words Used</h3>
+
+<div class="table-responsive" 
+style=" overflow:hidden;
+overflow-y: scroll;
+height: 500px;">
   <table class="table">
       <thead>
           <tr>
@@ -188,16 +192,25 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
  
 
 </div>
-<div class="table-responsive">
-  <h3>Prediction for individual Tweets</h3>
+<h3>Prediction for individual Tweets</h3>
+
+<div class="table-responsive"
+style=" overflow:hidden;
+overflow-y: scroll;
+height: 500px;"
+>
   <table class="table">
     <thead>
         <tr>
 
 
             <th scope="col">Tweet</th>
-            <th scope="col">Prediction</th>
-        </tr>
+            <th scope="col">Humour</th>
+            <th scope="col">Sentiment</th>
+            <th scope="col">Behaviour</th>
+
+
+          </tr>
     </thead>
 
     
@@ -208,8 +221,11 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
 
 
         <tr class="bg-blue">
-            <td class="pt-3 mt-1">{{row[5]}}</td>
-            <td class="pt-3 mt-1">{{row[2]}}</td>
+            <td class="pt-3 mt-1">{{row.content}}</td>
+            <td class="pt-3 mt-1">{{row.humour}}</td>
+            <td class="pt-3 mt-1">{{row.negative_positive_neutral}}</td>
+            <td class="pt-3 mt-1">{{row.hatespeech_offensive}}</td>
+
            
 
             
