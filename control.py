@@ -43,7 +43,7 @@ class Predicting():
         df= pd.DataFrame(data)
 
         #assigning columns to the dataframe
-        df.columns =['id', 'tweetID', 'content', 'tweetTS', 'username']
+        df.columns =['id', 'tweetID', 'content', 'tweetTS', 'username', 'cleaned_content']
 
         # To have the output dataframe, we must have the id of the dataframe to insert into database
         ids= df['id'].values.reshape(-1,1)
@@ -95,9 +95,6 @@ class Predicting():
         # close the connection after accomplishing the task
         self.db.close_connection(cursor, db)
 
-
-    
-    
     # a function that users the scraper class to scrape the data from the twitter and inserts into the database
     def scrape(self, username):
         obj = Scraper(username)
