@@ -91,14 +91,15 @@ body > div.container-fluid.display-table > div > div.container.rounded.mt-5.bg-w
                 <tr class="bg-blue">
                     <td class="pt-3 mt-1">{{row.d}}</td>
                     <td class="pt-3 mt-1">{{row.keyword}}</td>
-                    {% if row.status==1 %}
+                    {% if row.status==4 %}
                     <td class="pt-3 mt-1">Done</td>
                     <td>
-                      <a href="/uploads/{{row.id+'_'+row.keyword}}.csv" class="btn btn-danger btn-xs"">Download</a>
+                      <a href="/report?username={{row.keyword}}" class="btn btn-danger btn-xs"">Download</a>
 
                   </td>
+
                     {% endif %}
-                    {% if row.status==0 %}
+                    {% if row.status != 4 %}
                     <td class="pt-3 mt-1">Searching</td>
                     <td class="pt-3 mt-1">Wait</td>
 

@@ -229,30 +229,15 @@
                             >
                               Aspect Analysis
                             </a>
-                            <a
-                              class="tablinks"
-                              onclick="openReports(event, 'positions')"
-                            >
-                              Aspect Positions
-                            </a>
-                            <a
-                              class="tablinks"
-                              onclick="openReports(event, 'correlations')"
-                            >
-                              Aspect Correlations
-                            </a>
+                            
+                            
                             <a
                               class="tablinks"
                               onclick="openReports(event, 'cloudWords')"
                             >
                               Cloud of Words
                             </a>
-                            <a
-                              class="tablinks"
-                              onclick="openReports(event, 'map')"
-                            >
-                              Map
-                            </a>
+                            
                           </div>
                           <div id="meter" class="tabcontent">
                             <div
@@ -265,15 +250,15 @@
                             >
                               <div class="mt-4">
                                 <canvas id="myChart"></canvas>
-                                <h3 class="text-center mt-4">Cleanless</h3>
+                                <h3 class="text-center mt-4">Humour</h3>
                               </div>
                               <div class="mt-4">
                                 <canvas id="myChart2"></canvas>
-                                <h3 class="text-center mt-4">Location</h3>
+                                <h3 class="text-center mt-4">Hatespeech</h3>
                               </div>
                               <div class="mt-4">
                                 <canvas id="myChart3"></canvas>
-                                <h3 class="text-center mt-4">Rooms</h3>
+                                <h3 class="text-center mt-4">Offensive</h3>
                               </div>
                             </div>
 
@@ -285,18 +270,7 @@
                                 flex-wrap: wrap;
                               "
                             >
-                              <div class="mt-4">
-                                <canvas id="myChart4"></canvas>
-                                <h3 class="text-center mt-4">Service</h3>
-                              </div>
-                              <div class="mt-4">
-                                <canvas id="myChart5"></canvas>
-                                <h3 class="text-center mt-4">Sleep quality</h3>
-                              </div>
-                              <div class="mt-4">
-                                <canvas id="myChart6"></canvas>
-                                <h3 class="text-center mt-4">Value</h3>
-                              </div>
+                             
                             </div>
                           </div>
 
@@ -366,7 +340,7 @@
                                           color: black;
                                         "
                                       >
-                                        Hotels
+                                        Sentiment
                                       </a>
                                       <div class="progress" style="width: 90%">
                                         <div
@@ -410,7 +384,7 @@
                                         </div>
                                       </div>
                                       <div class="ml-3" style="width: 10%">
-                                        29 Reviews
+                                        29 Tweets
                                       </div>
                                     </div>
                                   </li>
@@ -431,7 +405,7 @@
                                           color: black;
                                         "
                                       >
-                                        Pool
+                                        Humour
                                       </a>
                                       <div class="progress" style="width: 90%">
                                         <div
@@ -475,7 +449,7 @@
                                         </div>
                                       </div>
                                       <div class="ml-3" style="width: 10%">
-                                        29 Reviews
+                                        29 Tweets
                                       </div>
                                     </div>
                                   </li>
@@ -496,7 +470,7 @@
                                           color: black;
                                         "
                                       >
-                                        Bedroom
+                                        Hatespeech
                                       </a>
                                       <div class="progress" style="width: 90%">
                                         <div
@@ -540,465 +514,13 @@
                                         </div>
                                       </div>
                                       <div class="ml-3" style="width: 10%">
-                                        29 Reviews
+                                        29 Tweets
                                       </div>
                                     </div>
                                   </li>
 
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Staff
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Location
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Bathroom
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Shower
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Price
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Garden
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
-
-                                  <li
-                                    class="col-md-10 my-2 aspect-progress-bar p-2"
-                                    onclick="ReviewModal(true)"
-                                  >
-                                    <div class="d-flex align-items-center">
-                                      <a
-                                        href="#"
-                                        class="mr-3 text-right pr-1"
-                                        style="
-                                          width: 8%;
-                                          border-right: 2px solid
-                                            rgb(109, 109, 109);
-                                          text-decoration: none;
-                                          color: black;
-                                        "
-                                      >
-                                        Food
-                                      </a>
-                                      <div class="progress" style="width: 90%">
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 15%;
-                                            background-color: #c21a1a;
-                                          "
-                                          aria-valuenow="15"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          15%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 60%;
-                                            background-color: #f9a503;
-                                          "
-                                          aria-valuenow="30"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          65%
-                                        </div>
-                                        <div
-                                          class="progress-bar"
-                                          role="progressbar"
-                                          style="
-                                            width: 25%;
-                                            background-color: #4de600;
-                                          "
-                                          aria-valuenow="20"
-                                          aria-valuemin="0"
-                                          aria-valuemax="100"
-                                        >
-                                          20%
-                                        </div>
-                                      </div>
-                                      <div class="ml-3" style="width: 10%">
-                                        29 Reviews
-                                      </div>
-                                    </div>
-                                  </li>
+                                
+                                  
                                 </ul>
                               </div>
 
@@ -1013,7 +535,7 @@
                                         class="modal-title"
                                         id="exampleModalLongTitle"
                                       >
-                                        Reviews
+                                        Tweets
                                       </h4>
                                       <button
                                         type="button"
@@ -1328,20 +850,7 @@
                             </div>
                           </div>
 
-                          <div id="positions" class="tabcontent">
-                            <div
-                              style="display: flex; justify-content: center"
-                              class="mb-4"
-                            >
-                              <div class="col-md-9 mt-4">
-                                <canvas
-                                  id="bar-chart-grouped"
-                                  width="800"
-                                  height="450"
-                                ></canvas>
-                              </div>
-                            </div>
-                          </div>
+                     
 
                           <div id="correlations" class="tabcontent">
                             <div
@@ -1517,21 +1026,7 @@
                                       Cloud of words - Frequency
                                     </label>
                                   </div>
-                                  <div
-                                    class="form-check ms-4"
-                                    style="margin-left: 4%"
-                                  >
-                                    <label class="form-check-label">
-                                      <input
-                                        type="radio"
-                                        class="form-check-input"
-                                        name="optionsRadios"
-                                        id="optionsRadios2"
-                                        onclick="checkOption()"
-                                      />
-                                      Cloud of words - Sentiment
-                                    </label>
-                                  </div>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -1991,7 +1486,7 @@
 
         function infoWindowTemplate(data) {
           const text = data.location_name;
-          const reviews = data.Reviews;
+          const Tweets = data.Tweets;
           const sentiment = data.Sentiment;
           const link = data.location_link;
 
@@ -2001,8 +1496,8 @@
               "<div> Hotel Name:" +
               text +
               "<div>" +
-              "<div>Reviews:" +
-              reviews +
+              "<div>Tweets:" +
+              Tweets +
               "<div>" +
               "<div> Sentiment:" +
               sentiment +
@@ -2030,21 +1525,21 @@
       [
         {
           "location_name": "Hotel 1",
-          "Reviews": "5",
+          "Tweets": "5",
           "Sentiment": "3.8",
           "latitude": "58.639870",
           "longitude": "27.158714"
         },
         {
           "location_name": "Hotel 2",
-          "Reviews": "55",
+          "Tweets": "55",
           "Sentiment": "3.9",
           "latitude": "58.639871",
           "longitude": "27.158750"
         },
         {
           "location_name": "Hotel 3",
-          "Reviews": "6",
+          "Tweets": "6",
           "Sentiment": "4.0",
           "latitude": "58.639892",
           "longitude": "27.158755"
