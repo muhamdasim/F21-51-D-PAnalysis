@@ -1,12 +1,211 @@
-{% include 'user-nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Panalysis | View Report</title>
+    <link rel="shortcut icon" href="images/favicon.png" />
 
+    <link rel="stylesheet" href="static/vendors/feather/feather.css" />
+    <link rel="stylesheet" href="static/vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="static/vendors/css/vendor.bundle.base.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="static/vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="static/vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="static/js/select.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="static/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="static/css/vertical-layout-light/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      .progress .progress-bar {
+        border-radius: 0px;
+      }
+      .aspect-progress-bar {
+        transition: all 0.3s;
+      }
+      .aspect-progress-bar:hover {
+        background-color: rgb(228, 228, 228);
+        cursor: pointer;
+      }
+      .square {
+        height: 13px;
+        width: 13px;
+        border-radius: 50px;
+      }
+      #main {
+        width: 600px;
+        height: 500px;
+        margin: 0px;
+      }
+
+      .google-map-infowindow-content {
+        padding: 0.4rem 1rem;
+        font-weight: 500;
+        font-size: 14px;
+        color: black;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .gm-style .gm-style-iw-t::after {
+        top: -1px;
+      }
+
+      #google-map {
+        height: 700px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" id="navbar">
+        <div
+          class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+        >
+          <a class="navbar-brand brand-logo" href="index.html" >
+            <img src="static/images/logo.png" alt="logo" class="img-fluid" id="logo1"/>
+          </a>
+          <!-- <a class="navbar-brand brand-logo" href="index.html" style="display: none;" id="logo2">
+            <img src="static/images/logo-white.png" alt="logo" class="img-fluid"/>
+          </a> -->
+          <a class="navbar-brand brand-logo-mini" href="index.html">
+            <img
+              src="static/images/favicon.png"
+              style="width: 100% !important;"
+              alt="logo"
+              class="img-fluid"
+            />
+          </a>
+        </div>
+        <div
+          class="navbar-menu-wrapper d-flex align-items-center"
+          style="justify-content: space-between;"
+        >
+          <button
+            class="navbar-toggler navbar-toggler align-self-center"
+            type="button"
+            data-toggle="minimize"
+          >
+            <span class="icon-menu"></span>
+          </button>
+
+          <button
+            class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+            type="button"
+            data-toggle="offcanvas"
+          >
+            <span class="icon-menu"></span>
+          </button>
+          <img src="static/images/moon.png" id="sidebar-dark-theme">
+        </div>
+      </nav>
+      <div class="container-fluid page-body-wrapper">
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/user_dashboard">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_queries">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Queries</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_groups">
+                <i class="icon-grid-2 menu-icon"></i>
+                <span class="menu-title">Groups</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_edit_profile">
+                <i class="ti-pencil menu-icon"></i>
+                <span class="menu-title">Edit Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="ti-power-off menu-icon"></i>
+                <span class="menu-title">Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <p class="card-title mb-3">Report Name: Report 1</p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                          <p class="card-title ms-4 mt-2">Report Name: Report 1</p>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group" style="display: flex; justify-content: right;">
+                            <input type="date" class="form-control me-4" style="width: 80%;">
+                          </div>
+                        </div>
+                        <div>
+                          <div>
+                            <div class="row ms-4 me-4 mb-4">
+                              <div class="form-group mb-0 p-0">
+                                <select
+                                  id="choices-multiple-remove-button"
+                                  class="form-select rounded-pill selectlang py-4"
+                                  placeholder="Select aspects"
+                                  multiple
+                                  style="background-color: #fdf5f5"
+                                >
+                                  <option disabled>Select Groups</option>
+                                  <option value="af">30 Bencoolen</option>
+                                  <option value="sq">10min</option>
+                                  <option value="am">24h</option>
+                                  <option value="ar">5min</option>
+                                  <option value="an">28 Dunlop</option>
+                                  <option value="hy">access</option>
+                                  <option value="ast">accommodation</option>
+                                  <option value="az">adapter</option>
+                                  <option value="eu">advance</option>
+                                  <option value="be">airport</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                     <form class="forms-sample">
                       <div class="row">
                         <div class="col-12">
@@ -102,38 +301,8 @@
                           </div>
 
                           <div id="timeline" class="tabcontent row">
-                            <div class="mt-4 mb-4">
-                              <div class="container">
-                                <div class="row">
-                                  <label
-                                    for="selectOption"
-                                    class="form-label ms-0 ps-0 fw-bold text-dark"
-                                  >
-                                    Select Aspects:
-                                  </label>
-                                  <div class="form-group mb-0 p-0">
-                                    <select
-                                      id="choices-multiple-remove-button"
-                                      class="form-select rounded-pill selectlang py-4"
-                                      placeholder="Select aspects"
-                                      multiple
-                                      style="background-color: #fdf5f5"
-                                    >
-                                      <option disabled>Select Groups</option>
-                                      <option value="af">30 Bencoolen</option>
-                                      <option value="sq">10min</option>
-                                      <option value="am">24h</option>
-                                      <option value="ar">5min</option>
-                                      <option value="an">28 Dunlop</option>
-                                      <option value="hy">access</option>
-                                      <option value="ast">accommodation</option>
-                                      <option value="az">adapter</option>
-                                      <option value="eu">advance</option>
-                                      <option value="be">airport</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
+                            <div class="mt-2 mb-4">
+                            
                               <div class="row justify-content-around">
                                 <div class="col-md-5 mt-3">
                                   <h3 class="my-4">Aspect Timeline:</h3>
@@ -1329,9 +1498,7 @@
                           </div>
 
                           <div id="cloudWords" class="tabcontent">
-                            <div
-                              style="display: flex; justify-content: center"
-                            >
+                            <div style="display: flex; justify-content: center">
                               <div class="col-md-8 mt-4">
                                 <div
                                   class="form-group"
@@ -1344,7 +1511,8 @@
                                         class="form-check-input"
                                         name="optionsRadios"
                                         id="optionsRadios1"
-                                        value=""
+                                        checked
+                                        onclick="checkOption()"
                                       />
                                       Cloud of words - Frequency
                                     </label>
@@ -1359,8 +1527,7 @@
                                         class="form-check-input"
                                         name="optionsRadios"
                                         id="optionsRadios2"
-                                        value="option2"
-                                        checked
+                                        onclick="checkOption()"
                                       />
                                       Cloud of words - Sentiment
                                     </label>
@@ -1368,8 +1535,15 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-12" style="display: flex; justify-content: center; margin-top: -2.5%;">
-                              <div id='main'></div>
+                            <div
+                              class="col-12"
+                              style="
+                                display: flex;
+                                justify-content: center;
+                                margin-top: -2.5%;
+                              "
+                            >
+                              <div id="main"></div>
                             </div>
                           </div>
 
@@ -1379,7 +1553,7 @@
                               class="mb-4"
                             >
                               <div class="col-md-12 mt-4">
-                                <div id="googleMap"></div>
+                                <div id="google-map"></div>
                               </div>
                             </div>
                           </div>
@@ -1398,7 +1572,7 @@
               >
                 Copyright © 2022. All rights reserved.
                 <a href="https://www.themewagon.com/" target="_blank">
-                  Sentimantle
+                  Panalysis
                 </a>
               </span>
             </div>
@@ -1406,69 +1580,9 @@
         </div>
       </div>
     </div>
-    <div
-      class="modal fade"
-      id="viewGroupModal"
-      tabindex="1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLongTitle">Edit Group</h4>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body p-4 pt-0">
-            <form class="pt-3">
-              <div class="form-group mb-2">
-                <label for="exampleInputEmail1">
-                  Group Name
-                  <b class="text-primary">*</b>
-                </label>
-                <input
-                  type="email"
-                  class="form-control form-control-lg"
-                  placeholder="Group Name"
-                />
-              </div>
-              <div class="form-group mb-2 mt-2">
-                <label for="exampleInputEmail1">
-                  Confirm Email
-                  <b class="text-primary">*</b>
-                </label>
-                <input
-                  type="email"
-                  class="form-control form-control-lg"
-                  id="exampleInputEmail1"
-                  placeholder="Confirm Email"
-                />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer p-4">
-            <button
-              type="button"
-              class="btn btn-primary mr-0"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-light">Save Changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/echarts-en.min-421rc1.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/echarts-wordcloud2.min.js"></script>
+    <script src="static/js/cloud-of-words.js"></script>
     <script src="static/vendors/js/vendor.bundle.base.js"></script>
     <script src="static/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="static/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
@@ -1480,13 +1594,7 @@
     <script src="static/js/dashboard.js"></script>
     <script src="static/vendors/chart.js/Chart.min.js"></script>
     <script src="static/js/Chart.roundedBarCharts.js"></script>
-    <script src="static/js/cloud-of-words.js"></script>
 
-    <script
-      async
-      defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD19cqU2rIzBHOPL_t8GhJJ9cmi-HNpULg&callback=initialize"
-    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -1513,25 +1621,6 @@
         evt.currentTarget.className += " active";
       }
       document.getElementById("defaultOpen").click();
-      //google map
-      function initialize() {
-        var mapOptions = {
-          zoom: 15,
-          scrollwheel: false,
-          center: new google.maps.LatLng(31.993072, 35.862211),
-        };
-
-        var map = new google.maps.Map(
-          document.getElementById("googleMap"),
-          mapOptions
-        );
-
-        var marker = new google.maps.Marker({
-          position: map.getCenter(),
-          animation: google.maps.Animation.BOUNCE,
-          map: map,
-        });
-      }
     </script>
     <script>
       Chart.defaults.doughnutLabels = Chart.helpers.clone(
@@ -1714,15 +1803,10 @@
       var ctx = document.getElementById("myChart").getContext("2d");
       var ctx2 = document.getElementById("myChart2").getContext("2d");
       var ctx3 = document.getElementById("myChart3").getContext("2d");
-      var ctx4 = document.getElementById("myChart4").getContext("2d");
-      var ctx5 = document.getElementById("myChart5").getContext("2d");
-      var ctx6 = document.getElementById("myChart6").getContext("2d");
       new Chart(ctx, config);
       new Chart(ctx2, config);
       new Chart(ctx3, config);
-      new Chart(ctx4, config);
-      new Chart(ctx5, config);
-      new Chart(ctx6, config);
+      
     </script>
 
     <script>
@@ -1808,7 +1892,7 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
-  
+
     <script>
       $(document).ready(function () {
         var multipleCancelButton = new Choices(
@@ -1850,6 +1934,122 @@
         if (check === true)
           document.getElementById("review-modal").style.display = "block";
       }
+    </script>
+
+    <!--Google Maps-->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?callback=googleMapInit"
+      defer
+    ></script>
+
+    <script>
+      const GoogleMaps = function (el, coords) {
+        const gm = window.google && window.google.maps;
+
+        if (!gm) return;
+
+        const map = new gm.Map(el);
+        const bounds = new gm.LatLngBounds();
+        const infoWindow = new gm.InfoWindow();
+        map.fitBounds(bounds);
+        for (let coord in coords) {
+          placeMarker(coords[coord]);
+        }
+
+        // map.fitBounds(bounds);
+
+        const idleListener = gm.event.addListener(map, "idle", function () {
+          if (map.getZoom() > 14) map.setZoom(54);
+          gm.event.removeListener(idleListener);
+        });
+
+        if (infoWindow) {
+          gm.event.addListener(map, "click", function () {
+            infoWindow.close();
+          });
+        }
+
+        function placeMarker(loc) {
+          const marker = new gm.Marker({
+            map: map,
+            position: {
+              lat: Number(loc.latitude),
+              lng: Number(loc.longitude),
+            },
+          });
+
+          if (infoWindow) {
+            gm.event.addListener(marker, "click", function () {
+              infoWindow.close();
+              infoWindow.setContent(infoWindowTemplate(loc));
+              infoWindow.open(map, marker);
+            });
+          }
+
+          bounds.extend(marker.position);
+        }
+
+        function infoWindowTemplate(data) {
+          const text = data.location_name;
+          const reviews = data.Reviews;
+          const sentiment = data.Sentiment;
+          const link = data.location_link;
+
+          const content = link
+            ? '<a href="' + link + '">' + text + "</a>"
+            : "<div class='d-flex fw-normal'>" +
+              "<div> Hotel Name:" +
+              text +
+              "<div>" +
+              "<div>Reviews:" +
+              reviews +
+              "<div>" +
+              "<div> Sentiment:" +
+              sentiment +
+              "<div>" +
+                "<div><div class='badge badge-warning mt-1'>night</div> <div class='badge badge-success mt-1'>area</div> <div class='badge badge-warning mt-1 me-1'>hostel</div><div class='badge badge-danger mt-1'>bed</div> </div"
+              "</div>";
+
+          return (
+            '<div class="google-map-infowindow-content">' + content + "</div>"
+          );
+        }
+      };
+
+      window.googleMapInit = function () {
+        const el = document.getElementById("google-map");
+        const coords = JSON.parse(
+          document.getElementById("google-maps-coords").innerHTML
+        );
+
+        GoogleMaps(el, coords);
+      };
+    </script>
+
+    <script type="application/json" id="google-maps-coords">
+      [
+        {
+          "location_name": "Hotel 1",
+          "Reviews": "5",
+          "Sentiment": "3.8",
+          "latitude": "58.639870",
+          "longitude": "27.158714"
+        },
+        {
+          "location_name": "Hotel 2",
+          "Reviews": "55",
+          "Sentiment": "3.9",
+          "latitude": "58.639871",
+          "longitude": "27.158750"
+        },
+        {
+          "location_name": "Hotel 3",
+          "Reviews": "6",
+          "Sentiment": "4.0",
+          "latitude": "58.639892",
+          "longitude": "27.158755"
+        }
+      ]
     </script>
   </body>
 </html>

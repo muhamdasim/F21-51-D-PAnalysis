@@ -29476,6 +29476,7 @@ code {
   font-weight: 400;
   font-size: 0.875rem;
   border-radius: 4px;
+  /* color: var(--text-gernal) !important; */
 }
 
 select.form-control,
@@ -29507,7 +29508,14 @@ select.typeahead:focus,
 select.tt-query:focus,
 select.tt-hint:focus {
   outline: 1px solid #ced4da;
-  background-color: transparent;
+  /* background-color: black !important; */
+}
+.form-control.form-modal{
+  background-color: transparent !important;
+  color: var(--gernal-text);
+}
+.form-control.form-modal:focus{
+  background-color: transparent !important;
 }
 
 select.form-control.border-primary,
@@ -50835,4 +50843,11 @@ div.tagsinput span.tag a {
 }
 .modal-header .close span{
   color: var(--text-gernal) !important;
+}
+.theme-text{
+  color: var(--gernal-text) !important;
+}
+.form-select.form-modal{
+  background-color: transparent;
+  color:var(--text-gernal);
 }

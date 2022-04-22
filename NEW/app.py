@@ -28,7 +28,6 @@ import time
 import csv
 from passlib.hash import sha256_crypt
 from scraper import Scraper
-from models import Model
 import pandas as pd
 import numpy
 from collections import Counter
@@ -679,55 +678,6 @@ def user_logout():
     return redirect(url_for('user_login'))
 
 
-#model_prediction
-def predict(dataset, username):
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute("select * from tweets WHERE username=%s", [username])
-    data= cursor.fetchall()
-    df= pd.DataFrame(data)
-
-    #getting top 10 words
-    tweets= df['content'].values.reshape(-1, 1)
-    count_10 = Counter(" ".join(df["content"]).split()).most_common(10)
-
-    
-    if(dataset=="humour"):
-        model = Model()
-        model.addModel("static/models/humour_en/saved_model/random_forest.joblib")
-        # model.addModel("static/models/humour_en/saved_model/svm.joblib")
-        output=model.predict(df)
-        output1=output.transpose()
-        output1=output1.rename({0: 'Neutral', 1: 'Funny', 2: 'Neutral'}, axis='columns')
-        output1["max"] = output1.idxmax(axis=1)
-        output1["tweet"]= tweets
-        
-        final=output1['max'].value_counts()
-        return count_10, final, output1
-    elif(dataset=="hatespeech_offensive"):
-        model = Model()
-        model.addModel("static/models/hatespeech_offensive/saved_model/random_forest.joblib")
-        # model.addModel("static/models/hatespeech_offensive/saved_model/svm.joblib")
-        output=model.predict(df)
-        output1=output.transpose()
-        output1=output1.rename({0: 'Hate Speech', 1: 'Offensive', 2: 'Neutral'}, axis='columns')
-        output1["max"] = output1.idxmax(axis=1)
-        output1["tweet"]= tweets
-        final=output1['max'].value_counts()
-        return count_10, final, output1
-    elif(dataset=="negative_positive_neutral"):
-        model = Model()
-        model.addModel("static/models/negative_positive_neutral_en/saved_model/random_forest.joblib")
-        # model.addModel("static/models/negative_positive_neutral_en/saved_model/svm.joblib")
-        output=model.predict(df)
-        output1=output.transpose()
-        output1=output1.rename({0: 'Neutral', 1: 'Positive', 2: 'Negative', 3: 'Mixed'}, axis='columns')
-        output1["max"] = output1.idxmax(axis=1)
-        output1["tweet"]= tweets
-
-        final=output1['max'].value_counts()
-        return count_10, final, output1
-
-
 
 
 # user routing -- redirect to user dashboard  page.
@@ -834,37 +784,6 @@ def predict(dataset, username):
 #         return redirect(url_for('user_login'))
 
 #     return render_template('user_dashboard.html')
-
-
-@app.route('/report', methods=['GET', 'POST'])
-def showreport():
-    username = request.args.get('username', default=None, type=str)
-    if username == None:
-        return redirect(url_for('search_history'))
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute("select * from users_profile WHERE username=%s", [username])
-    user_profile= cursor.fetchone()
-    cursor.execute("SELECT count(content), MONTH(tweetTS) FROM tweets WHERE UPPER(content) LIKE UPPER('%% Spacex %%') GROUP BY MONTH(tweetTS)")
-    dates= cursor.fetchall()
-
-
-    count, prediction_scale, prediction_keyword = predict("humour",username)
-    count, prediction_scale_hatespeech, prediction_keyword_hatespeech = predict("hatespeech_offensive", username)
-    count, prediction_scale_npn, prediction_keyword_npn=  predict("negative_positive_neutral", username)
-    a=[prediction_scale, prediction_scale_hatespeech, prediction_scale_npn]
-    tweets_based_prediction= [prediction_keyword, prediction_keyword_hatespeech, prediction_keyword_npn]
-    tweets_based_prediction= pd.concat(tweets_based_prediction)
-    print(tweets_based_prediction['tweet'])
-
-    data= pd.concat(a)
-    data= data.to_dict()
-    del a    
-    PyIds = [int(line.split()[1]) for line in os.popen('tasklist').readlines()[3:] if line.split()[0] == "python.exe"]
-    PyIdsToKill = [id for id in PyIds if id != os.getpid()]
-    for pid in PyIdsToKill:
-        os.system("taskkill /pid %i" % pid)
-    
-    return render_template('report.html', humour_data=data, user_profile=user_profile, tweets_based_prediction = tweets_based_prediction, count= count,dates= dates)
 
 
 # faqs page
